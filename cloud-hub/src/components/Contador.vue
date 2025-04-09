@@ -12,8 +12,8 @@
     iterator.value -= finalNumber.value
   }
 
-  function handleClick(e){
-    e.preventDefault() as HtmlFormElement
+  function handleClick(e: Event){
+    e.preventDefault() 
     const data = new FormData(e.target)
     const number = data.get('numero')
     console.log(`El numero es de tipo: ${typeof(number)}`)
