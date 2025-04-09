@@ -1,4 +1,5 @@
 <script setup>
+  import DateInput from './DateInput/DateInput.vue'
   import OrderByInput from './OrderByInput/OrderByInput.vue'
   import TransactionInput from './TransactionInput/TransactionInput.vue'
 
@@ -19,6 +20,12 @@
       <OrderByInput/>
       <TransactionInput/>
     </div>
+    <div class="box-date-time">
+      <span>Fechas:</span>
+      <DateInput name="fecha-1"/>
+      <DateInput name="fecha-2"/>
+    </div>
+
     <button type="submit">Enviar</button>
   </form>
 </template>
@@ -28,6 +35,15 @@
     display: flex;
     gap: 2px; 
 
+  }
+
+  .box-date-time{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+    margin-bottom: 10px;
   }
 </style>
 
