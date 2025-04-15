@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import Contador from './components/Contador.vue'
-  import List from './components/List.vue'
-  import Form from './components/Form.vue'
+  import Form from './components/Form.vue';
+  import Table from './components/Table/Table.vue'
 </script>
 
 <template>
   <div class="form-box">    
         <Form>
         </Form>
+        <Table/>
     </div>
 </template>
 
