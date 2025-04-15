@@ -3,6 +3,7 @@
   import OrderByInput from './OrderByInput/OrderByInput.vue'
   import TransactionInput from './TransactionInput/TransactionInput.vue'
   import ShowPaysInput from './SearchInput/SearchInput.vue'
+  import ShowNInput from './ShowNPaysInput/ShowNInput.vue'
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -27,6 +28,9 @@
       <span>Fechas:</span>
       <DateInput name="fecha-1"/>
       <DateInput name="fecha-2"/>
+    </div>
+    <div class="footer">
+      <ShowNInput/>
     </div>
 
     <button type="submit">Enviar</button>
@@ -53,6 +57,12 @@
   .box-search{
     width: 30%;
     height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .footer{
+    width: 100%;
+    height: 24px;
     margin-bottom: 10px;
   }
 </style>
