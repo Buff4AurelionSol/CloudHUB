@@ -17,7 +17,7 @@
 
 <style scoped>
     .labelShowPaysSelect{
-        width: 25%;
+        width: 100%;
         height: 25px;
         display: flex;
         justify-content: center;

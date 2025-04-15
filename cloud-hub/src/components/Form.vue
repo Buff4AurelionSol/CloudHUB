@@ -5,32 +5,43 @@
   import ShowPaysInput from './SearchInput/SearchInput.vue'
   import ShowNInput from './ShowNPaysInput/ShowNInput.vue'
 
+   const emit = defineEmits()
+ 
+
   function handleSubmit(e) {
     e.preventDefault()
-    const data = Object.fromEntries(new FormData(e.target))
-
-    console.log(data)
-
+    const data = Object.fromEntries(new FormData(e.target)) 
+    let showPaysSelect = data["showPaysSelect"]
+    emit('numberToFilter', showPaysSelect)
   }
 </script>
 
 <template>
   <h1>Formulario</h1>
   <form @submit="handleSubmit">
-    <div class="box-search">
-      <ShowPaysInput/>
-    </div>
-    <div class="data-form">
-      <OrderByInput/>
-      <TransactionInput/>
-    </div>
-    <div class="box-date-time">
-      <span>Fechas:</span>
-      <DateInput name="fecha-1"/>
-      <DateInput name="fecha-2"/>
-    </div>
-    <div class="footer">
-      <ShowNInput/>
+    <div class="box-form">
+      <div class="box-search">
+        <ShowPaysInput/>
+      </div>
+  
+      <div class="box-date-time">
+        <span>Fechas:</span>
+        <DateInput name="fecha-1"/>
+        <DateInput name="fecha-2"/>
+      </div>
+
+      <div class="showRegisters">
+        <ShowNInput/>
+      </div>
+
+      <div class="orderBy">
+        <OrderByInput/>
+      </div>
+      <div class="transaction">
+        <TransactionInput/>
+      </div>
+   
+      
     </div>
 
     <button type="submit">Enviar</button>
@@ -38,32 +49,46 @@
 </template>
 
 <style scoped>
-  .data-form{
-    display: flex;
-    gap: 2px; 
-    margin-bottom: 8px;
 
+  .box-form{
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 3;
+    gap: 10px; 
+  }
+  
+  .orderBy{
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .transaction{
+    grid-column: 2;
+    grid-row: 3; 
   }
 
   .box-date-time{
-    width: 30%;
     display: flex;
     align-items: center;
     text-align: center;
     gap: 2px;
     margin-bottom: 10px;
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #D9D9D9;
+    padding-left: 10px;
   }
 
   .box-search{
-    width: 30%;
     height: 40px;
     margin-bottom: 10px;
+    grid-row: 1/2; 
   }
 
-  .footer{
-    width: 100%;
-    height: 24px;
+  .showRegisters{
     margin-bottom: 10px;
+    grid-column: 1;
+    grid-row: 3;
   }
 </style>
 
