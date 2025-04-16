@@ -5,7 +5,7 @@
 <template>
     <div class="order-by-input">
         <span>Ordenar por:</span>
-        <select name="order-by">
+        <select name="orderBy">
             <option :value="option" v-for="(option) in OPTIONS_ORDER_BY" key="item">
                 {{option}}
             </option>

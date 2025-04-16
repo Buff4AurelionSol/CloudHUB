@@ -13,10 +13,43 @@
       transactions:{
         type: Array,
         default: () => []
+      },
+      orderBy:{
+        type: String
       }
     })
     
-    const filtredData = computed(()=> reports.slice(0, props.indexState))
+    const sortedAndFilteredData = computed(() => {
+      console.log('Ordenando por:', props.orderBy); 
+     
+      
+    
+      let data = reports.slice(0, props.indexState).filter(report => 
+        props.transactions.length === 0 || 
+        props.transactions.includes('TODOS') || 
+        props.transactions.includes(report.tipoTransaccion)
+      );
+
+
+      switch (props.orderBy) {
+        case 'Por defecto':
+          return data;
+        case 'Referencia':
+          return [...data].sort((a, b) => a.referencia.localeCompare(b.referencia));
+
+          case 'Monto bs':
+            console.log("Ordernar por monto")
+          return
+
+
+        default:
+          return data;
+      }
+    });
+
+
+
+
 
 </script>
 
@@ -44,8 +77,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(report, index) in filtredData" :key="index">
-          <template v-if="props.transactions.includes('TODOS') || props.transactions.includes(report.tipoTransaccion) || props.transactions.length ===  0">
+        <tr v-for="(report, index) in sortedAndFilteredData" :key="index">
+
             <td>{{ index + 1 }}</td>
             <td>{{ report.id }}</td>
             <td>{{ report.estado }}</td>
@@ -62,7 +95,6 @@
             <td>{{ report.bancoDestino }}</td>
             <td>{{ report.fechaTransaccion }}</td>
             <td>{{ report.fechaReporte }}</td>
-          </template>
         </tr>
       </tbody>
     </table>

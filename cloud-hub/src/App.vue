@@ -6,6 +6,7 @@
   const indexState = ref(10)
   const filters = ref([])
   const transactions = ref([])
+  const orderBy = ref("")
 
 
 function getNumberToFilter(value) {
@@ -20,13 +21,23 @@ function getTransactions(data){
   transactions.value = data
 }
 
+function getOrderBy(data){
+  orderBy.value = data
+  
+}
+
 
 </script>
 
 <template>
   <div class="form-box">    
-    <Form @numberToFilter="getNumberToFilter" @sendData="getData" @transactions="getTransactions"/>
-    <Table :indexState="indexState" :filters="filters" :transactions="transactions"/>
+    <Form @numberToFilter="getNumberToFilter" @sendData="getData" @transactions="getTransactions" @orderBy="getOrderBy"/>
+    <Table 
+      :indexState="indexState" 
+      :filters="filters" 
+      :transactions="transactions" 
+      :orderBy="orderBy"
+    />
   </div>
 </template>
 

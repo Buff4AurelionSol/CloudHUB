@@ -6,20 +6,22 @@
   import ShowPaysInput from './SearchInput/SearchInput.vue'
   import ShowNInput from './ShowNPaysInput/ShowNInput.vue'
 
-   const emit = defineEmits(['numberToFilter','sendData', 'transactions'])
+   const emit = defineEmits(['numberToFilter','sendData', 'transactions', 'orderBy'])
    const selectedValues = ref([])
 
   function handleSubmit(e) {
     e.preventDefault()
     const dataArray = []
     const data = Object.fromEntries(new FormData(e.target)) 
-    let showPaysSelect = data["showPaysSelect"]
-    let trasactionData = data["transaction"]    
+    let showPaysSelect = data["showPaysSelect"] 
     data.transaction = selectedValues.value
+
 
     emit('numberToFilter', showPaysSelect)
     emit('sendData', dataArray)
     emit('transactions', data.transaction)
+    emit('orderBy', data.orderBy)
+
   }
 
 
