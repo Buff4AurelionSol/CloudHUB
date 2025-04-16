@@ -9,22 +9,22 @@ export enum OPTIONS_ORDER_BY {
     ORIGIN_BANK = "Banco origen"
 }
 
-export enum OPTIONS_TRANSACTION{
-    ALL = "TODOS",
-    TRANSFER = "Transferencia",
-    DEPOSIT = "Depópsito",
-    BANESCO = "Banesco Pagos",
-    MULTIPAYMENT = "Multipago",
-    PAGOMOVIL = "Pago móvil",
-    C2P = "C2P",
-    CASH = "Efectivo",
-    PDV = "Pdv",
-    POS_VIRTUAL = "Pos virutal",
-    DEBIN_BNC = "Debin BNC",
-    INMEDIATLY_CREDIT = "Crédito inmediato",
-    INMEDIATLY_DEBIT = "Débito inmediato",
-    BIOPAGO = "Biopago"
-}
+export const OPTIONS_TRANSACTION = [
+  "TODOS",
+  "TRANSFERENCIA",
+  "DEPÓSITO",
+  "BANESCO PAGOS",
+  "MULTIPAGO",
+  "PAGO MÓVIL",
+  "C2P",
+  "EFECTIVO",
+  "PDV",
+  "POS VIRTUAL",
+  "DEBIN BNC",
+  "CRÉDITO INMEDIATO",
+  "DÉBITO INMEDIATO",
+  "BIOPAGO"
+] 
 
 type Report = {
     id: string;

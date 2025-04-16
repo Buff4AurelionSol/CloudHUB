@@ -1,12 +1,23 @@
-<script setup lang="ts">
-    import { computed, type Ref } from 'vue';
+<script setup>
+    import { computed} from 'vue';
     import { reports } from '../consts/const';
-    interface PropsTable{
-        indexState: number
-    }
-    const props = defineProps<PropsTable>()
+
+    const props = defineProps({
+      indexState:{
+        type: Number,
+      },
+      filters:{
+        type: Array,
+        default: () => []
+      },
+      transactions:{
+        type: Array,
+        default: () => []
+      }
+    })
     
     const filtredData = computed(()=> reports.slice(0, props.indexState))
+
 </script>
 
 <template>
@@ -34,22 +45,24 @@
       </thead>
       <tbody>
         <tr v-for="(report, index) in filtredData" :key="index">
-          <td>{{ index + 1 }}</td>
-          <td>{{ report.id }}</td>
-          <td>{{ report.estado }}</td>
-          <td>{{ report.referencia }}</td>
-          <td>{{ report.tipoReporte }}</td>
-          <td>{{ report.tipoTransaccion }}</td>
-          <td>{{ report.montoTransaccionBs }}</td>
-          <td>{{ report.montoUSD }}</td>
-          <td>{{ report.tasa }}</td>
-          <td>{{ report.contratos }}</td>
-          <td>{{ report.cliente }}</td>
-          <td>{{ report.rifCedula }}</td>
-          <td>{{ report.bancoOrigen }}</td>
-          <td>{{ report.bancoDestino }}</td>
-          <td>{{ report.fechaTransaccion }}</td>
-          <td>{{ report.fechaReporte }}</td>
+          <template v-if="props.transactions.includes('TODOS') || report.tipoTransaccion.includes(props.transactions)">
+            <td>{{ index + 1 }}</td>
+            <td>{{ report.id }}</td>
+            <td>{{ report.estado }}</td>
+            <td>{{ report.referencia }}</td>
+            <td>{{ report.tipoReporte }}</td>
+            <td>{{ report.tipoTransaccion }}</td>
+            <td>{{ report.montoTransaccionBs }}</td>
+            <td>{{ report.montoUSD }}</td>  
+            <td>{{ report.tasa }}</td>
+            <td>{{ report.contratos }}</td>
+            <td>{{ report.cliente }}</td>
+            <td>{{ report.rifCedula }}</td>
+            <td>{{ report.bancoOrigen }}</td>
+            <td>{{ report.bancoDestino }}</td>
+            <td>{{ report.fechaTransaccion }}</td>
+            <td>{{ report.fechaReporte }}</td>
+          </template>
         </tr>
       </tbody>
     </table>

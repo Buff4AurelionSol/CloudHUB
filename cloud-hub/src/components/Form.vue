@@ -1,19 +1,33 @@
-<script setup>
+<script setup >
+  import { ref } from 'vue';
   import DateInput from './DateInput/DateInput.vue'
   import OrderByInput from './OrderByInput/OrderByInput.vue'
   import TransactionInput from './TransactionInput/TransactionInput.vue'
   import ShowPaysInput from './SearchInput/SearchInput.vue'
   import ShowNInput from './ShowNPaysInput/ShowNInput.vue'
 
-   const emit = defineEmits()
- 
+   const emit = defineEmits(['numberToFilter','sendData', 'transactions'])
+   const selectedValues = ref([])
 
   function handleSubmit(e) {
     e.preventDefault()
+    const dataArray = []
     const data = Object.fromEntries(new FormData(e.target)) 
     let showPaysSelect = data["showPaysSelect"]
+    let trasactionData = data["transaction"]    
+    data.transaction = selectedValues.value
+
     emit('numberToFilter', showPaysSelect)
+    emit('sendData', dataArray)
+    emit('transactions', data.transaction)
   }
+
+
+  function getTransactions(values){
+     selectedValues.value =  values
+  }
+
+
 </script>
 
 <template>
@@ -38,7 +52,7 @@
         <OrderByInput/>
       </div>
       <div class="transaction">
-        <TransactionInput/>
+        <TransactionInput @sendSelectedValues="getTransactions"/>
       </div>
    
       
