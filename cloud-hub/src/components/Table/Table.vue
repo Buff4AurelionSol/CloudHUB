@@ -45,7 +45,7 @@
       </thead>
       <tbody>
         <tr v-for="(report, index) in filtredData" :key="index">
-          <template v-if="props.transactions.includes('TODOS') || report.tipoTransaccion.includes(props.transactions)">
+          <template v-if="props.transactions.includes('TODOS') || props.transactions.includes(report.tipoTransaccion) || props.transactions.length ===  0">
             <td>{{ index + 1 }}</td>
             <td>{{ report.id }}</td>
             <td>{{ report.estado }}</td>
