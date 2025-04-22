@@ -37,10 +37,8 @@
         case 'Referencia':
           return [...data].sort((a, b) => a.referencia.localeCompare(b.referencia));
 
-          case 'Monto bs':
-            console.log("Ordernar por monto")
-          return
-
+          case 'Monto Bs':
+          return [...data].sort((a,b) => a.montoTransaccionBs - b.montoTransaccionBs)
 
         default:
           return data;
