@@ -37,9 +37,12 @@
         case 'Referencia':
           return [...data].sort((a, b) => a.referencia.localeCompare(b.referencia));
 
-          case 'Monto Bs':
+        case 'Monto Bs':
           return [...data].sort((a,b) => a.montoTransaccionBs - b.montoTransaccionBs)
-
+        
+        case 'Contrato':
+          return [...data].sort((a,b)=> a.contratos - b.contratos)
+  
         default:
           return data;
       }
