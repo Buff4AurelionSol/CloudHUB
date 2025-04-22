@@ -75,12 +75,13 @@
       
     });
 
+    const thereAreRegisters = computed(()=> sortedAndFilteredData.value.length > 0)
 
 </script>
 
 <template>
   <div class="table-container">
-    <table class="styled-table">
+    <table v-if="thereAreRegisters" class="styled-table" >
       <thead>
         <tr>
           <th>#</th>
@@ -103,7 +104,6 @@
       </thead>
       <tbody>
         <tr v-for="(report, index) in sortedAndFilteredData" :key="index">
-
             <td>{{ index + 1 }}</td>
             <td>{{ report.id }}</td>
             <td>{{ report.estado }}</td>
@@ -123,6 +123,9 @@
         </tr>
       </tbody>
     </table>
+      <div v-else class="not-found">
+            <h2>No se encontraron registros</h2>
+      </div>
   </div>
 </template>
 
@@ -163,5 +166,13 @@
 
 .styled-table tbody tr:hover {
   background-color: #eef6ff;
+}
+
+.not-found{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
