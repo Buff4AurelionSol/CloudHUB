@@ -43,7 +43,12 @@ function isChangeDirectionOrderBy(){
 </script>
 
 <template>
-  <div class="form-box">    
+  <div class="form-box">
+    
+    <v-btn>
+      Button
+    </v-btn>
+    
     <Form @numberToFilter="getNumberToFilter" 
       @sendData="getData" 
       @transactions="getTransactions" 

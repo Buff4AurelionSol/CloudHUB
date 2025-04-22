@@ -25,6 +25,7 @@
     let showPaysSelect = data["showPaysSelect"] 
     data.transaction = selectedValues.value
 
+    console.log(data)
     emit('numberToFilter', showPaysSelect)
     emit('sendData', dataArray)
     emit('transactions', data.transaction)
@@ -97,6 +98,7 @@
     grid-row: 2;
     display: flex;
     gap: 5px; 
+
   }
 
   .transaction{
