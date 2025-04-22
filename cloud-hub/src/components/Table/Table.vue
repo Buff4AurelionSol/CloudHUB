@@ -19,15 +19,26 @@
       },
       haveIChangeDirectionOrderBy:{
         type: Boolean
+      },
+      searchValue:{
+        type: String
       }
     })
     
     const sortedAndFilteredData = computed(() => {
-      let data = reports.slice(0, props.indexState).filter(report => 
-        props.transactions.length === 0 || 
-        props.transactions.includes('TODOS') || 
-        props.transactions.includes(report.tipoTransaccion)
-      );
+      let data = reports.slice(0, props.indexState).filter(report => {
+        const transactionMatch = props.transactions.length === 0 || props.transactions.includes('TODOS') || 
+          props.transactions.includes(report.tipoTransaccion);
+        
+        const searchMatch = !props.searchValue || 
+          Object.values(report).some(value => 
+            String(value).toLowerCase().includes(props.searchValue.toLocaleLowerCase())
+          )
+          return transactionMatch && searchMatch;
+      } 
+       );
+      
+      
 
       let sortedData;
       
@@ -61,6 +72,7 @@
       }
 
       return props.haveIChangeDirectionOrderBy ? [...sortedData].reverse() : sortedData;
+      
     });
 
 

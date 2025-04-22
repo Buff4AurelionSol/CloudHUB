@@ -7,7 +7,7 @@
   import ShowNInput from './ShowNPaysInput/ShowNInput.vue'
   import ExchangeIMG from '../pics/exchangeIMG.png'
 
-   const emit = defineEmits(['numberToFilter','sendData', 'transactions', 'orderBy', 'isChangeDirectionOrderBy'])
+   const emit = defineEmits(['numberToFilter','sendData', 'transactions', 'orderBy', 'isChangeDirectionOrderBy', 'isChangeDirectionTransaction', 'sendSearch'])
    const selectedValues = ref([])
 
   const props = defineProps({
@@ -29,6 +29,7 @@
     emit('sendData', dataArray)
     emit('transactions', data.transaction)
     emit('orderBy', data.orderBy)
+    emit('sendSearch', data.search)
 
   }
 
@@ -38,6 +39,10 @@
 
   function isChangeDirectionOrderBy(){
     emit('isChangeDirectionOrderBy')
+  }
+
+  function isChangeDirectionTransaction(){
+    emit('isChangeDirectionTransaction')
   }
 
 
@@ -72,8 +77,6 @@
       <div class="transaction">
         <TransactionInput @sendSelectedValues="getTransactions"/>
       </div>
-   
-      
     </div>
 
     <button type="submit">Enviar</button>
@@ -98,7 +101,9 @@
 
   .transaction{
     grid-column: 2;
-    grid-row: 3; 
+    grid-row: 3;
+    display: flex;
+    gap: 5px; 
   }
 
   .box-date-time{

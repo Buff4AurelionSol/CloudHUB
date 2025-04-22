@@ -8,6 +8,7 @@
   const transactions = ref([])
   const orderBy = ref("")
   const haveIChangeDirectionOrderBy = ref(false)
+  const searchValue = ref("")
 
 function getNumberToFilter(value) {
   indexState.value = Number(value)
@@ -25,16 +26,19 @@ function getOrderBy(data){
   orderBy.value = data
 }
 
-function isChangeDirectionOrderBy(data){
+function getSearch(data){
+  searchValue.value = data
+  console.log(searchValue.value)
+}
+
+function isChangeDirectionOrderBy(){
   haveIChangeDirectionOrderBy.value 
   ? 
     haveIChangeDirectionOrderBy.value = false 
   : 
     haveIChangeDirectionOrderBy.value = true
 
-  console.log(haveIChangeDirectionOrderBy.value)
 }
-
 
 </script>
 
@@ -46,6 +50,7 @@ function isChangeDirectionOrderBy(data){
       @orderBy="getOrderBy"
       :haveIChangeDirectionOrderBy="haveIChangeDirectionOrderBy"
       @isChangeDirectionOrderBy="isChangeDirectionOrderBy"
+      @sendSearch="getSearch"
     />
     <Table 
       :indexState="indexState" 
@@ -53,6 +58,7 @@ function isChangeDirectionOrderBy(data){
       :transactions="transactions" 
       :orderBy="orderBy"
       :haveIChangeDirectionOrderBy="haveIChangeDirectionOrderBy"
+      :searchValue="searchValue"
     />
   </div>
 </template>
