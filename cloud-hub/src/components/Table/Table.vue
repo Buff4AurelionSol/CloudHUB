@@ -16,52 +16,52 @@
       },
       orderBy:{
         type: String
+      },
+      haveIChangeDirectionOrderBy:{
+        type: Boolean
       }
     })
     
     const sortedAndFilteredData = computed(() => {
-      console.log('Ordenando por:', props.orderBy); 
-     
-      
-    
       let data = reports.slice(0, props.indexState).filter(report => 
         props.transactions.length === 0 || 
         props.transactions.includes('TODOS') || 
         props.transactions.includes(report.tipoTransaccion)
       );
 
-
+      let sortedData;
+      
       switch (props.orderBy) {
         case 'Por defecto':
-          return data;
+          sortedData = data;
+          break;
         case 'Referencia':
-          return [...data].sort((a, b) => a.referencia.localeCompare(b.referencia));
-
+          sortedData = [...data].sort((a, b) => a.referencia.localeCompare(b.referencia));
+          break;
         case 'Monto Bs':
-          return [...data].sort((a,b) => a.montoTransaccionBs - b.montoTransaccionBs)
-        
+          sortedData = [...data].sort((a,b) => a.montoTransaccionBs - b.montoTransaccionBs);
+          break;
         case 'Contrato':
-          return [...data].sort((a,b)=> a.contratos - b.contratos)
-        
+          sortedData = [...data].sort((a,b)=> a.contratos - b.contratos);
+          break;
         case 'Cliente':
-          return [...data].sort((a,b) => a.cliente.localeCompare(b.cliente))
-        
+          sortedData = [...data].sort((a,b) => a.cliente.localeCompare(b.cliente));
+          break;
         case 'Rif/Cedula':
-          return [...data].sort((a,b) => a.rifCedula - b.rifCedula)
-        
+          sortedData = [...data].sort((a,b) => a.rifCedula - b.rifCedula);
+          break;
         case 'Banco destino':
-          return [...data].sort((a,b) => a.bancoDestino.localeCompare(b.bancoDestino))
-        
+          sortedData = [...data].sort((a,b) => a.bancoDestino.localeCompare(b.bancoDestino));
+          break;
         case 'Banco origen':
-          return [...data].sort((a,b) => a.bancoOrigen.localeCompare(b.bancoOrigen))
-  
+          sortedData = [...data].sort((a,b) => a.bancoOrigen.localeCompare(b.bancoOrigen));
+          break;
         default:
-          return data;
+          sortedData = data;
       }
+
+      return props.haveIChangeDirectionOrderBy ? [...sortedData].reverse() : sortedData;
     });
-
-
-
 
 
 </script>

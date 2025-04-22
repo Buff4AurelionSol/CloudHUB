@@ -5,9 +5,18 @@
   import TransactionInput from './TransactionInput/TransactionInput.vue'
   import ShowPaysInput from './SearchInput/SearchInput.vue'
   import ShowNInput from './ShowNPaysInput/ShowNInput.vue'
+  import ExchangeIMG from '../pics/exchangeIMG.png'
 
-   const emit = defineEmits(['numberToFilter','sendData', 'transactions', 'orderBy'])
+   const emit = defineEmits(['numberToFilter','sendData', 'transactions', 'orderBy', 'isChangeDirectionOrderBy'])
    const selectedValues = ref([])
+
+  const props = defineProps({
+    haveIChangeDirectionOrderBy:{
+      type: Boolean
+    }
+  })
+
+
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -16,7 +25,6 @@
     let showPaysSelect = data["showPaysSelect"] 
     data.transaction = selectedValues.value
 
-
     emit('numberToFilter', showPaysSelect)
     emit('sendData', dataArray)
     emit('transactions', data.transaction)
@@ -24,9 +32,12 @@
 
   }
 
-
   function getTransactions(values){
      selectedValues.value =  values
+  }
+
+  function isChangeDirectionOrderBy(){
+    emit('isChangeDirectionOrderBy')
   }
 
 
@@ -52,6 +63,11 @@
 
       <div class="orderBy">
         <OrderByInput/>
+        <button class="buttonExchange" name="changeDirectionOrderByButton" @click="isChangeDirectionOrderBy" type="button">
+          <span>
+            <img :src="ExchangeIMG" alt="Cambiar orden">
+          </span>
+        </button>
       </div>
       <div class="transaction">
         <TransactionInput @sendSelectedValues="getTransactions"/>
@@ -76,6 +92,8 @@
   .orderBy{
     grid-column: 2;
     grid-row: 2;
+    display: flex;
+    gap: 5px; 
   }
 
   .transaction{
@@ -106,5 +124,21 @@
     grid-column: 1;
     grid-row: 3;
   }
+
+  .buttonExchange{
+    height: 25px;
+    width: 25px;
+  }
+
+  .buttonExchange span{
+    height: 100%;
+    width: 100%;
+  }
+
+  .buttonExchange img {
+    width: 100%;
+    height: auto;
+  }
+
 </style>
 

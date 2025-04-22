@@ -7,7 +7,7 @@
   const filters = ref([])
   const transactions = ref([])
   const orderBy = ref("")
-
+  const haveIChangeDirectionOrderBy = ref(false)
 
 function getNumberToFilter(value) {
   indexState.value = Number(value)
@@ -23,7 +23,16 @@ function getTransactions(data){
 
 function getOrderBy(data){
   orderBy.value = data
-  
+}
+
+function isChangeDirectionOrderBy(data){
+  haveIChangeDirectionOrderBy.value 
+  ? 
+    haveIChangeDirectionOrderBy.value = false 
+  : 
+    haveIChangeDirectionOrderBy.value = true
+
+  console.log(haveIChangeDirectionOrderBy.value)
 }
 
 
@@ -31,12 +40,19 @@ function getOrderBy(data){
 
 <template>
   <div class="form-box">    
-    <Form @numberToFilter="getNumberToFilter" @sendData="getData" @transactions="getTransactions" @orderBy="getOrderBy"/>
+    <Form @numberToFilter="getNumberToFilter" 
+      @sendData="getData" 
+      @transactions="getTransactions" 
+      @orderBy="getOrderBy"
+      :haveIChangeDirectionOrderBy="haveIChangeDirectionOrderBy"
+      @isChangeDirectionOrderBy="isChangeDirectionOrderBy"
+    />
     <Table 
       :indexState="indexState" 
       :filters="filters" 
       :transactions="transactions" 
       :orderBy="orderBy"
+      :haveIChangeDirectionOrderBy="haveIChangeDirectionOrderBy"
     />
   </div>
 </template>
