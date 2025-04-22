@@ -42,6 +42,9 @@
         
         case 'Contrato':
           return [...data].sort((a,b)=> a.contratos - b.contratos)
+        
+        case 'Cliente':
+          return [...data].sort((a,b) => a.cliente.localeCompare(b.cliente))
   
         default:
           return data;
