@@ -51,6 +51,9 @@
         
         case 'Banco destino':
           return [...data].sort((a,b) => a.bancoDestino.localeCompare(b.bancoDestino))
+        
+        case 'Banco origen':
+          return [...data].sort((a,b) => a.bancoOrigen.localeCompare(b.bancoOrigen))
   
         default:
           return data;
