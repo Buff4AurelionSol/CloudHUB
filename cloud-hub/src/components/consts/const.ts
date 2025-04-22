@@ -4,7 +4,7 @@ export enum OPTIONS_ORDER_BY {
     AMOUNT_BS = "Monto Bs",
     CONTRACT = "Contrato",
     CLIENT = "Cliente",
-    RIF = "Rif",
+    RIF_CEDULA = "Rif/Cedula",
     DESTINY_BANK = "Banco destino",
     ORIGIN_BANK = "Banco origen"
 }

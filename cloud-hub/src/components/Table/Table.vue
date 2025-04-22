@@ -45,6 +45,9 @@
         
         case 'Cliente':
           return [...data].sort((a,b) => a.cliente.localeCompare(b.cliente))
+        
+        case 'Rif/Cedula':
+          return [...data].sort((a,b) => a.rifCedula - b.rifCedula)
   
         default:
           return data;
