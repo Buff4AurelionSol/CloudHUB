@@ -4,6 +4,8 @@
 
 <template>
         <v-combobox
+            width="50%"
+            
             name="orderBy"
             label="Ordenar por"
             :items="OPTIONS_ORDER_BY"
