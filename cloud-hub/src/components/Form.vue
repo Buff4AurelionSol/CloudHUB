@@ -81,8 +81,7 @@
         <TransactionInput @sendSelectedValues="getTransactions"/>
       </div>
     </div>
-
-    <button type="submit">Enviar</button>
+    <v-btn variant="outlined" type="submit"> Enviar </v-btn>
   </form>
 </template>
 

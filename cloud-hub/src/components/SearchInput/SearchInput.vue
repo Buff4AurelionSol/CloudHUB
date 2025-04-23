@@ -3,7 +3,8 @@
 
 <template>
     <v-text-field
-        width="100%"
+        class="search-box"
+        width="60%"
         clearable
         name="search"
         label="Buscar"
@@ -13,5 +14,8 @@
 </template>
 
 <style scoped>
-
+    .search-box{
+        place-self: start; 
+        margin-left: 5px;
+    }
 </style>
