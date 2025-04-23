@@ -9,6 +9,9 @@ import * as directives from 'vuetify/directives'
 import App from './App.vue'
 
 const vuetify = createVuetify({
+  theme:{
+    defaultTheme: 'dark'
+  },
   components,
   directives,
 })

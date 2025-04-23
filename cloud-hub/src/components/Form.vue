@@ -137,6 +137,7 @@
     margin-bottom: 10px;
     grid-column: 1;
     grid-row: 3;
+    display: flex;
   }
 
   .buttonExchange{

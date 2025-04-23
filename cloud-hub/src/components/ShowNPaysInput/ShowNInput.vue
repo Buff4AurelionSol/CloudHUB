@@ -1,18 +1,18 @@
 <script setup>
+import { ref } from 'vue';
+
     const options = [10, 25, 50, 100];
+    const defaultValue = ref(options[0])
 </script>
 
 <template>
-    <label class="labelShowPaysSelect">
-        Mostrar
-        <select name="showPaysSelect" id="showPaysSelect">
-            <option :value="option" v-for="(option) in options">
-                {{ option }}
-            </option>
-        </select>
-        Registros
-    </label>
-
+    <v-select
+        name="showPaysSelect"
+        label="Cantidad de registros a mostrar"
+        :items="options"
+        variant="outlined"
+        v-model="defaultValue"
+    />
 </template>
 
 <style scoped>

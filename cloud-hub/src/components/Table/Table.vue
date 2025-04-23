@@ -81,7 +81,7 @@
 
 <template>
   <div class="table-container">
-    <table v-if="thereAreRegisters" class="styled-table" >
+    <v-table v-if="thereAreRegisters" fixed-header>
       <thead>
         <tr>
           <th>#</th>
@@ -122,7 +122,7 @@
             <td>{{ report.fechaReporte }}</td>
         </tr>
       </tbody>
-    </table>
+    </v-table>
       <div v-else class="not-found">
             <h2>No se encontraron registros</h2>
       </div>
