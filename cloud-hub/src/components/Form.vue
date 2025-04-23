@@ -50,7 +50,7 @@
 </script>
 
 <template>
-  <h1>Formulario</h1>
+  <header class="header-Form"><h1>Reportes de Pagos</h1></header>
   <form @submit="handleSubmit">
     <div class="box-form">
       <div class="box-search">
@@ -59,8 +59,8 @@
   
       <div class="box-date-time">
         <span>Fechas:</span>
-        <DateInput name="fecha-1"/>
-        <DateInput name="fecha-2"/>
+        <DateInput name="fecha-1" label="Fecha de inicio"/>
+        <DateInput name="fecha-2" label="Fecha final"/>
       </div>
 
       <div class="showRegisters">
@@ -81,7 +81,9 @@
         <TransactionInput @sendSelectedValues="getTransactions"/>
       </div>
     </div>
-    <v-btn variant="outlined" type="submit"> Enviar </v-btn>
+    <div class="box-button">
+      <v-btn variant="outlined" type="submit"> Enviar </v-btn>
+    </div>
   </form>
 </template>
 
@@ -120,16 +122,16 @@
     align-items: center;
     text-align: center;
     gap: 2px;
+    margin-left: 10px;
     margin-bottom: 10px;
     grid-column: 1;
     grid-row: 2;
-    background-color: #D9D9D9;
     padding-left: 10px;
   }
 
   .box-search{
     height: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     grid-row: 1/2; 
   }
 
@@ -143,6 +145,8 @@
   .buttonExchange{
     height: 25px;
     width: 25px;
+    position: absolute;
+    right: 10px;
   }
 
   .buttonExchange span{
@@ -153,6 +157,19 @@
   .buttonExchange img {
     width: 100%;
     height: auto;
+  }
+
+  .header-Form{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+
+  .box-button{
+    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+    
   }
 
 </style>

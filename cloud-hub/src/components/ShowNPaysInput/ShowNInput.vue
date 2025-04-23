@@ -7,6 +7,7 @@ import { ref } from 'vue';
 
 <template>
     <v-select
+        style="margin-left: 10px;"
         name="showPaysSelect"
         label="Cantidad de registros a mostrar"
         :items="options"
@@ -16,19 +17,5 @@ import { ref } from 'vue';
 </template>
 
 <style scoped>
-    .labelShowPaysSelect{
-        width: 100%;
-        height: 25px;
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        background-color: #D9D9D9;
-        align-items: center;
-    }
-
-    #showPaysSelect{
-        width: 50px;
-        height: 22px;
-    }
 
 </style>

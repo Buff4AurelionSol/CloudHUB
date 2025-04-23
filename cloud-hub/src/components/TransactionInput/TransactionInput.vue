@@ -26,7 +26,7 @@
   .transactions {
     width: 100%;
     margin-right: 10px;   
-    height: 45px;  
+    height: 78px;  
   }
   
   </style>

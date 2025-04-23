@@ -4,7 +4,7 @@
 <template>
     <v-text-field
         class="search-box"
-        width="60%"
+        width="100%"
         clearable
         name="search"
         label="Buscar"

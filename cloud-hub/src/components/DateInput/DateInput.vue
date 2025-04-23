@@ -2,18 +2,22 @@
     const props = defineProps({
         name:{
             type: String
+        },
+        label: {
+            type: String
         }
     })
 </script>
 
 <template>
-    <input type="date" class="date-time" :name="props.name">
+    <v-date-input variant="outlined" :name="props.name" :label="props.label"/>
 </template>
 
 <style>
     .date-time{
         width: auto;
         height: 25px;
+        
     }
     
 </style>
