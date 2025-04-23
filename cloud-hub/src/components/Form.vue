@@ -69,11 +69,13 @@
 
       <div class="orderBy">
         <OrderByInput/>
-        <button class="buttonExchange" name="changeDirectionOrderByButton" @click="isChangeDirectionOrderBy" type="button">
-          <span>
-            <img :src="ExchangeIMG" alt="Cambiar orden">
-          </span>
-        </button>
+        <div class="box-button-change">
+            <button class="buttonExchange" name="changeDirectionOrderByButton" @click="isChangeDirectionOrderBy" type="button">
+              <span>
+                <img :src="ExchangeIMG" alt="Cambiar orden">
+              </span>
+            </button>
+        </div>
       </div>
       <div class="transaction">
         <TransactionInput @sendSelectedValues="getTransactions"/>
@@ -98,7 +100,13 @@
     grid-row: 2;
     display: flex;
     gap: 5px; 
+  }
 
+  .box-button-change{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
   }
 
   .transaction{

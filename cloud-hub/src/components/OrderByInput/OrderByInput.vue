@@ -3,21 +3,19 @@
 </script>
 
 <template>
-    <div class="order-by-input">
-        <span>Ordenar por:</span>
-        <select name="orderBy">
-            <option :value="option" v-for="(option) in OPTIONS_ORDER_BY" key="item">
-                {{option}}
-            </option>
-        </select>
-    </div>
+        <v-combobox
+            name="orderBy"
+            label="Ordenar por"
+            :items="OPTIONS_ORDER_BY"
+            class="order-by-input"
+        />
 </template>
 
 <style scoped>
     .order-by-input{
         width: 50%;
-        height: 25px;
-        border: 2px solid black;
-        margin-bottom: 6px;
+        height: 45px;
+        margin-bottom: 6px; 
     }
+
 </style>

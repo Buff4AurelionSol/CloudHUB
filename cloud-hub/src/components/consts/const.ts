@@ -1,13 +1,13 @@
-export enum OPTIONS_ORDER_BY {
-    DEFAULT = "Por defecto",
-    REFERENCE = "Referencia",
-    AMOUNT_BS = "Monto Bs",
-    CONTRACT = "Contrato",
-    CLIENT = "Cliente",
-    RIF_CEDULA = "Rif/Cedula",
-    DESTINY_BANK = "Banco destino",
-    ORIGIN_BANK = "Banco origen"
-}
+export const OPTIONS_ORDER_BY = [
+    "Por defecto",
+    "Referencia",
+    "Monto Bs",
+    "Contrato",
+    "Cliente",
+    "Rif/Cedula",
+    "Banco destino",
+    "Banco origen"
+]
 
 export const OPTIONS_TRANSACTION = [
   "TODOS",
