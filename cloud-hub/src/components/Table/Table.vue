@@ -1,6 +1,8 @@
 <script setup>
     import { computed} from 'vue';
     import { reports } from '../consts/const';
+    import DetailsIcon from '@/pics/visible.png'
+    import Modal from '../Modal/Modal.vue';
 
     const props = defineProps({
       indexState:{
@@ -100,6 +102,7 @@
           <th>BANCO DESTINO</th>
           <th>FECHA TRANSACCIÓN</th>
           <th>FECHA REPORTE</th>
+          <th>Ver detalles</th>
         </tr>
       </thead>
       <tbody>
@@ -120,59 +123,42 @@
             <td>{{ report.bancoDestino }}</td>
             <td>{{ report.fechaTransaccion }}</td>
             <td>{{ report.fechaReporte }}</td>
+            <Modal :imageIcon="DetailsIcon" 
+              :reportsDate="report.fechaReporte"
+            />
         </tr>
       </tbody>
     </v-table>
       <div v-else class="not-found">
             <h2>No se encontraron registros</h2>
       </div>
-  </div>
+      <footer>
+        Total de registros: {{reports.length}}
+      </footer>
+  </div>  
 </template>
 
 <style>
-.table-container {
-  padding: 20px;
-  overflow-x: auto;
-}
+  
+  td{
+    font-size: small;
+  }
 
-.styled-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-}
+  .table-container {
+    padding: 20px;
+    overflow-x: auto;
+  }
 
-.styled-table thead {
-  background-color: #f3f3f3;
-}
+  .box-icon{
+    width: 30px;
+    height: 30px;
+  }
 
-.styled-table th,
-.styled-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-.styled-table th {
-  background-color: #007acc;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.styled-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.styled-table tbody tr:hover {
-  background-color: #eef6ff;
-}
-
-.not-found{
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .not-found{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
